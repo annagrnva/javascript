@@ -1,8 +1,18 @@
 let x = prompt('введите значение x', '');
 let n = prompt('введите значение n', '');
-let result = pow(x, n);
+
 
 function pow(x, n) {
-    return x ** n;
+
+   let result = x; 
+    for (let i = 1; i < n; i++) {
+        result *= x;
+    }
+    return result;
 }
-alert(result);
+
+if (n >=1 && n % 1 == 0) {
+    alert (pow(x, n));
+} else {
+    alert ('не поддерживается')
+}
