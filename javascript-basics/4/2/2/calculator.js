@@ -3,12 +3,12 @@ let calculator = {
         let a = prompt("введите значение а", );
         let b = prompt("введите значение b", );
     },
-    sum() { return 
-        a + b 
+    sum() { 
+        return this. a + this.b; 
     },
 
-    mul() { return 
-        a * b
+    mul() { 
+        return this.a * this.b;
   },
 }
   
