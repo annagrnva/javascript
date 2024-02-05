@@ -1,10 +1,11 @@
 let calculator = {
     read() {
-        let a = prompt("введите значение а", );
-        let b = prompt("введите значение b", );
+        this.a = 2;
+        this.b = 2;
     },
     sum() { 
-        return this. a + this.b; 
+        console.log(this.a);
+        return this.a + this.b; 
     },
 
     mul() { 
@@ -13,5 +14,5 @@ let calculator = {
 }
   
   calculator.read();
-  alert( calculator.sum() );
-  alert( calculator.mul() );
+  console.log( calculator.sum() );
+ 

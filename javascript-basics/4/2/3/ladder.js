@@ -37,17 +37,3 @@
 // Когда сумеете – исправьте её так, чтобы она выводила «FizzBuzz» для всех
 // чисел, которые делятся и на 3 и на 5.
 // без конструкции "else" только "if"
-
-function myFunc() {
-
-    for (let i = 1; i <= 10; i++) {
-let result = ""
-        if (result+= i % 3 === 0 && i % 5 === 0);
-        console.log("FizzBuzz");
-    }
-}
-
-myFunc();
-
-// result += "илья";
-// result += " и аня";
