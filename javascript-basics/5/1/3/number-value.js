@@ -11,10 +11,10 @@ function readNumber() {
     let num;
     do {
         num = prompt("введите число", '');
-    } while (num);
+    } while (!isFinite (num));
 
     if (num === null || num === '') return null;
-    return;
+    return (num);
 
 };
 
