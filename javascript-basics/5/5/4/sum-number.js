@@ -10,16 +10,22 @@
 // ввод значений при вводе «0».
 
 function sumInput() {
-   
-let arr = [];
 
-while (true) {
-    let value = prompt ("введите значиения");
+    let numbers = [];
 
-    if (!value <= 0 || value == "" || value == null) break;
-  alert(value);
-  alert(arr);
+    while (true) {
+        let value = prompt("введите значиения");
+
+        if (isFinite(value) || value == "" || value == null) break;
+
+        numbers.push(+value);
+    };
+
+    let sum = 0;
+    for (let number of numbers) {
+       sum += number;
+    } 
+    return sum;
 };
-};
 
-sumInput();
+alert(sumInput());
