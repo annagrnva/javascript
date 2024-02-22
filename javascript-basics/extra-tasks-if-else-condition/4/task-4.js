@@ -30,4 +30,4 @@ if (score >= 90 && score <= 100) {
 } else if (score < 59) {
     grade = "F";
 };
-alert("Гред по баллам равен:", grade);
+alert("Гред по баллам равен:" + grade);
