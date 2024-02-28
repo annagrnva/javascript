@@ -3,18 +3,15 @@
 // Решить задачу с помощью for
 
 
+let count = 0;
+let uncount = 0
 
-
-// ПОКА НЕ ДОРЕШАЛА ЭТУ ЗАДАЧУ, НЕ СМОТРИ
-
-
-
-
-let sum = 0;
-for (let i = 0; i < 3; i++) {
-
+for (let i = 0; i < 9; i++) {
     if (i % 2 === 0) {
-        sum = sum + i;
-    } 
-}
-console.log(sum);
+       count += 1;
+    } else {
+        uncount += 1;
+    }
+};
+console.log(count);
+console.log(uncount);

@@ -2,8 +2,8 @@
 // от  1 до N. N - динамичная переменная
 // Решить задачу с помощью for
 
-let sum = 1; 
-    for (let i = 1; i < 5; i++) {
-       sum += i;
-    };
-     console.log(sum);
+let sum = 0;
+for (let i = 0; i < 5; i++) {
+   sum += i;
+};
+console.log(sum);
