@@ -2,41 +2,22 @@
 // либо пробел, либо #. В результате должна получиться шахматная доска.
 
 
-// let grid = "#";
-// let result = '';
-// let result1 = ' ';
-
-// for (let i = 1; i <= 8; i++) {
-
-//     if (i % 2 === 0) {
-
-//         result += grid + " ";
-//     } else {
-//         result1 += " " + grid;
-//     }
-// }
-
-// console.log(result);
-// console.log(result1);
-// console.log(result);
-// console.log(result1);
-// console.log(result);
-// console.log(result1);
 
 let grid = '#';
+let size = 8;
 let result = '';
 
-for (let i = 1; i <= 8; i++) {
+for (let i = 1; i <= size; i++) {
 
-    for (let j = 1; j <= 8; j++) {
+    for (let j = 1; j <= size; j++) {
 
-        if (j % 2 === 0) {
+        if ( (j + i) % 2 === 0) {
 
-            result += grid + ' ';
+            result += grid;
 
-        } else if (j % 2 === 0) {
+        } else {
 
-            result += ' ' + grid;
+            result += ' ';
         }
     };
     result += '\n';
