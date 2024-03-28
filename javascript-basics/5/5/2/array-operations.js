@@ -15,10 +15,11 @@
 // Классика, Рок-н-ролл
 // Рэп, Регги, Классика, Рок-н-ролл
 
-let styles = [ "Джаз", "Блюз" ]; //1
-styles.push( "Рок-н-ролл" ); //2
-styles[1] = "Классика"; //3
-styles.shift(); //4
-styles.unshift( "Реп", "Регги" ); //5
+let styles = ['Джаз', 'Блюз'];
 
-console.log(styles);
+styles.push('Рок-н-ролл')
+styles[1] = 'Классика'
+styles.shift()
+styles.unshift('Реп', 'Регги')
+
+console.log(styles)

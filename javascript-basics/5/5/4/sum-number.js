@@ -1,4 +1,5 @@
-// Напишите функцию sumInput(), которая:
+// Сумма введённых чисел 
+//Напишите функцию sumInput(), которая:
 
 // Просит пользователя ввести значения, 
 // используя prompt и сохраняет их в массив.
@@ -9,23 +10,28 @@
 // P.S. Ноль 0 – считается числом, не останавливайте 
 // ввод значений при вводе «0».
 
+
+
+
 function sumInput() {
 
-    let numbers = [];
-
+    let arrs = [];
     while (true) {
-        let value = prompt("введите значиения");
 
-        if (isFinite(value) || value == "" || value == null) break;
+        let value = prompt('введите значение', 0);
 
-        numbers.push(+value);
-    };
+        if (value == !isFinite || value == '') break;
+
+        arrs.push(+value);
+    }
 
     let sum = 0;
-    for (let number of numbers) {
-       sum += number;
-    } 
-    return sum;
-};
+    for (let arr of arrs)
+        sum += arr;
 
-alert(sumInput());
+return sum;
+}
+
+
+alert(sumInput())
+
