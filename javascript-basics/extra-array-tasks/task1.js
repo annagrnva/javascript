@@ -81,7 +81,7 @@ function findElemFunc(arr) {
     
     let max = 0;
     
-    for (key in obj) {
+    for (let key in obj) {
         
        if (obj[key] > max) {
            max = obj[key];
