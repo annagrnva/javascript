@@ -12,16 +12,23 @@
 
 // alert( arr ); // [3, 1]
 
-// function filterRangeInPlace(arr, a, b) {
+ let arr = [5, 3, 8, 1];
 
-//   let newArr =[];
+console.log('ДО', arr); // [5, 3, 8, 1];
+
+function filterRange(a,b) {
+    
+    arr.forEach(function(item, index) {
+        if ( !(item >= a && item <= b) ) {
+            
+          arr.splice(index, 1); // удаляет 1 индекс, с 1 значения        
+            
+        }
+    })
 
 
-//   let result = arr.filter(function(item, index) {
+}
 
-//     if (item <= a || item >= b) {
-//         arr.splice(1,1)
-//     }
-//   })
-// }
-// console.log(filterRangeInPlace([5, 3, 8, 1], 1, 4))
+filterRange(1, 4); // удалены числа вне диапазона 1..4
+
+console.log('ПОСЛЕ', arr); // [3, 1]

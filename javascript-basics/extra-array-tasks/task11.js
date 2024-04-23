@@ -12,12 +12,19 @@
 // alert( sorted ); // CSS, HTML, JavaScript
 // alert( arr ); // HTML, JavaScript, CSS (без изменений)
 
-function copySorted(arr) {
 
-    let sorted = ["HTML", "JavaScript", "CSS"];
-   sorted.sort()
 
-   return sorted
+let arr = ["HTML", "JavaScript", "CSS"];
+    
+function copySorted(arrNew) {
+    const splicedArr = arrNew.slice();
+    
+    splicedArr.sort()
+    return splicedArr
 }
-console.log(copySorted())
+    
+let sorted = copySorted(arr);
+
+console.log('Изначальный', arr ); // HTML, JavaScript, CSS (без изменений)
+console.log('Отсортированный', sorted ); // CSS, HTML, JavaScript
 

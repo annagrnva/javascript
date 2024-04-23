@@ -9,7 +9,7 @@ let arr = [5, 2, 1, -10, 8];
 let a = 0;
 let b = 0;
 arr.sort(function(a, b) {
-return a - b
+return b - a
 })
 
 console.log(arr)
