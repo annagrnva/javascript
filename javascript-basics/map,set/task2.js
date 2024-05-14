@@ -41,8 +41,8 @@ function aclean(arr) {
         let sortArr = resultArr.sort().join("").toLowerCase()
         // console.log(sortArr)
 
-        if (!result.has(resultArr)) {
-            result.set(sortArr, resultArr)
+        if (!result.has(sortArr)) {
+            result.set(sortArr, item)
         } else { }
     });
     
