@@ -30,7 +30,7 @@
 // Array.from('ear') // ['e', 'a', 'r'].sort() ['e', 'r', 'a'].sort() -> ['a', 'e', 'r'] -> 'aer'
 // Например:
 
-let words = ["ear", "era", "nap"] // "nap", "teachers", "cheaters", "PAN", "hectares"];
+ let words = ["ear", "era", "nap", "nap", "teachers", "cheaters", "PAN", "hectares"];
 
 function aclean(arr) {
 
@@ -38,14 +38,16 @@ function aclean(arr) {
 
     arr.forEach((item, index) => {
         let resultArr = Array.from(item);
-        let sortArr = resultArr.sort().join("")
+        let sortArr = resultArr.sort().join("").toLowerCase()
         // console.log(sortArr)
 
-        if (!result.has(sortArr)) {
+        if (!result.has(resultArr)) {
             result.set(sortArr, resultArr)
         } else { }
     });
-    return result;
+    
+    return Array.from(result.values());
+
 }
 
 console.log(aclean(words)); // "nap,teachers,ear" или "PAN,cheaters,era"
