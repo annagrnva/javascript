@@ -10,20 +10,19 @@
 // Если да – приведите пример вашего кода.
 
 
-let anna = {
-    name: 'Anna'
-}
-function A(name) {
-   return this.name = name;
+let anna = {};
+
+function A() {
+   return anna;
      
 };
 
-function B(name) {
-   return  this.name = name;
+function B() {
+   return  anna;
     
 };
 
 let a = new A();
 let b = new B();
 
-console.log(a == b) //false
+console.log(a == b) //true
