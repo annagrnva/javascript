@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.red {
+  background-color: red;
+}

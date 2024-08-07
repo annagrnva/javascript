@@ -1,0 +1,8 @@
+body {
+  font-family: sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
