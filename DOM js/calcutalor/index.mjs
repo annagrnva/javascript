@@ -8,11 +8,14 @@ calculatorForm.addEventListener("submit", function (event) {
 
     const number1Value = number1Input.value;
     const number2Value = number2Input.value;
-    const sumValue = sumInput.value = +number1Input.value + +number2Input.value;
 
-    console.log(number1Value);
-    console.log(number2Value);
-    console.log(sumValue)
+    if (number1Value === "" || number2Value === "") {
+        alert("введите значение")
+        return number1Value || number2Value
+    }
+    sumInput.value = +number1Input.value + +number2Input.value;
+
+
 });
 
 
