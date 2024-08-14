@@ -12,22 +12,32 @@ calculatorForm.addEventListener("submit", function (event) {
 
     const error = document.querySelector("#error");
     if (number1Value === "") {
-        error.innerText = "Поле пустое-запоните"
+        error.innerText = "Поле пустое-заполните"
         return number1Value || number2Value;
     };
     if (number2Value === "") {
-        error.innerText = "Поле пустое-запоните"
+        error.innerText = "Поле пустое-заполните"
         return number1Value || number2Value;
-        
+
     };
-    resultInput.value = +number1Input.value + +number2Input.value;
+
+    const radioInput = document.querySelector("input[name='sign']:checked");
+    const radioInputValue = radioInput.value;
+    if (radioInput.value === "+") {
+        resultInput.value = +number1Input.value + +number2Input.value;
+    } else if (radioInput.value === "*") {
+        resultInput.value = +number1Input.value * +number2Input.value;
+    } else if (radioInput.value === "/") {
+        resultInput.value = +number1Input.value / +number2Input.value;
+    }
+
+
 
     number1Input.value = "";
     number2Input.value = "";
 });
 
 
-// const radioInput = document.querySelector("input[name='sign']:checked");
-// const radioInputValue = radioInput.value;
+
 
 
