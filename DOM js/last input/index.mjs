@@ -6,13 +6,22 @@ const myButton = document.querySelector("#button");
 let lastInput = null;
 
 input1.addEventListener("input", () => {
-    lastInput = 1
+    lastInput = 1;
+
 });
 
 input2.addEventListener("input", () => {
-    lastInput = 2
+    lastInput = 2;
+
 });
 
-myButton.addEventListener("click", () => {
+myButton.addEventListener("click", (event) => {
+
+    if (lastInput === 1) {
+        result.textContent = "input1"
+    } else {
+        result.textContent = "input2"
+        
+    }
 
 })
