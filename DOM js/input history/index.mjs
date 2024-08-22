@@ -6,14 +6,24 @@ resultForm.addEventListener("submit", (event) => {
     event.preventDefault()
     const inputValue = inputText.value;
     console.log(inputValue);
-    // result.textContent = inputValue;
-    result.insertAdjacentHTML("beforeend", 
+    result.insertAdjacentHTML("beforeend",
         `
-        ${inputValue}
+     <div>${inputValue}</div>
         `
     );
     inputText.value = "";
 
+});
+
+const deleteBtn = document.createElement("button");
+deleteBtn.textContent = 'delete';
+
+deleteBtn.addEventListener('click', () => {
+    const resultDelete = document.querySelector("#result");
+    resultDelete.remove()
+
 })
+document.body.append(deleteBtn)
+// console.log(deleteBtn)
 
 
