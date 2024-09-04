@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.boxes {
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(3, 1fr);
+ 
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.red {
+  background-color: red;
+}
+.black {
+  background-color: black;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.blue {
+  background-color: blue;
+}
