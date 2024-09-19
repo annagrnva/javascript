@@ -1,11 +1,9 @@
 const inputText = document.querySelector("#inputText");
 const container = document.querySelector("#container");
 const result = document.querySelector("#result");
-const counter = document.querySelector("#counter");
-const counterTasks = document.querySelector("#counter-tasks");
-const counterTasksNum = document.querySelector("#counter-tasks-num");
-const counterDone = document.querySelector("#counter-done");
-const counterDoneNum = document.querySelector("#counter-done-num");
+
+// const counterDone = document.querySelector("#counter-done");
+// const counterDoneNum = document.querySelector("#counter-done-num");
 
 let count = 1;
 
@@ -39,21 +37,40 @@ container.addEventListener("submit", (event) => {
   count++
   inputText.value = "";
 
-  // счетчик инпута Сколько всего задач
-
-  counterTasksNum.textContent = ++counterTasksNum.textContent;
-  
-  // счетчик радио-кнопки при нажатии Выполнено
-  const radioInput = document.querySelector("input[name='radio']")
-  radioInput.addEventListener('click', () => {
-    // if(counterDoneNum) {
-
-    // }
-   // counterDoneNum.textContent = ++counterDoneNum.textContent;
-  
 
 
+  // отрицательный счетчик инпута Сколько всего задач
+
+  deleteButton.addEventListener('click', () => {
+    counterTasksNum.textContent = --counterTasks
   })
 
 })
+// положительный счетчик инпута Сколько всего задач
+
+let counterTasks = 0;
+const counterTasksNum = document.querySelector("#counter-tasks-num");
+
+container.addEventListener('submit', () => {
+  counterTasksNum.textContent = ++counterTasks
+})
+
+
+
+
+//ТУТ НЕ СМОТРИ!!!!!!!!!!!!!
+// // счетчик радио-кнопки при нажатии Выполнено
+// const radioInput = document.querySelector("input[name='radio']")
+// // radioInput.addEventListener('click', (event) => {
+// //   if(event.target) {
+
+// //   }
+
+// inputValue.addEventListener('click', (event) => {
+
+//   event.classList.add("inputTextDone")
+// })
+// // console.log(inputValue)
+//  // counterDoneNum.textContent = ++counterDoneNum.textContent;
+
 
