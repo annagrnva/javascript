@@ -10,6 +10,7 @@ body {
   gap: 10px;
 }
 
-.inputTextDone {
+.inputTextChecked {
 color: grey;
+text-decoration: line-through;
 }
