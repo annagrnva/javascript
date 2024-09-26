@@ -49,13 +49,15 @@ function addToDo(element) {
   radioButton.addEventListener('click', () => {
     if (!(newElement.classList.contains('inputTextChecked'))) {
       newElement.classList.add('inputTextChecked')
+       counterDoneNum.textContent = counterDoneNum.textContent + 1
     } else {
       newElement.classList.remove('inputTextChecked')
+       counterDoneNum.textContent = counterDoneNum.textContent - 1
     }
     // положительный и отрицательный счетчики Выполнено
-    if (counterDoneNum.textContent = ++counterDone) {
-      counterTasksNum.textContent = --counterTasks
-    } else { }
+    // if (counterDoneNum.textContent = ++counterDone) {
+    //   counterTasksNum.textContent = --counterTasks
+    // }
   })
 }
 
