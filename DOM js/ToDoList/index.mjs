@@ -14,8 +14,10 @@ let counterDone = 0;
 function deleteToDo(element) {
   element.remove();
   count--;
-  // отрицательный счетчик инпута Сколько всего задач
-  counterTasksNum.textContent = --counterTasks;
+  // отрицательный счетчик инпута
+
+  counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1;
+  counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1;
 
 }
 
@@ -26,7 +28,7 @@ function addToDo(element) {
 
   newElement.innerHTML = `
 <div>
-<input type="radio" class="radio-button" name="radio"/>
+<input type="checkbox" class="check-button" name="checkbox"/>
 <span>${inputValue}</span>
 <button class="newElement-edit-button">Edit</button>
 <button class="newElement-delete-button-${count}">Delete</button>
@@ -41,23 +43,25 @@ function addToDo(element) {
   count++
   inputText.value = "";
 
+
+
   // положительный счетчик инпута Сколько всего задач
-  counterTasksNum.textContent = ++counterTasks;
+  counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
+
 
   //отметка  о выполнении пункта
-  const radioButton = newElement.querySelector("input[name='radio']")
-  radioButton.addEventListener('click', () => {
+  const checkboxButton = newElement.querySelector("input[name='checkbox']")
+  checkboxButton.addEventListener('click', () => {
     if (!(newElement.classList.contains('inputTextChecked'))) {
       newElement.classList.add('inputTextChecked')
-       counterDoneNum.textContent = counterDoneNum.textContent + 1
+      counterDoneNum.textContent = Number(counterDoneNum.textContent) + 1
+      counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
     } else {
       newElement.classList.remove('inputTextChecked')
-       counterDoneNum.textContent = counterDoneNum.textContent - 1
+      counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
+      counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
     }
-    // положительный и отрицательный счетчики Выполнено
-    // if (counterDoneNum.textContent = ++counterDone) {
-    //   counterTasksNum.textContent = --counterTasks
-    // }
+
   })
 }
 
