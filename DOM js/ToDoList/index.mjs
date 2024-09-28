@@ -4,22 +4,24 @@ const result = document.querySelector("#result");
 const counterTasksNum = document.querySelector("#counter-tasks-num");
 // const counterDone = document.querySelector("#counter-done");
 const counterDoneNum = document.querySelector("#counter-done-num");
+const newElement = document.createElement('div');
+
 
 
 let count = 1;
-let counterTasks = 0;
-let counterDone = 0;
+let countEdit = 1;
 
 
 function deleteToDo(element) {
   element.remove();
   count--;
+
   // отрицательный счетчик инпута
-
-  counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1;
-  counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1;
-
+  if ((newElement.classList.remove)) {
+   counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
+  }
 }
+
 
 function addToDo(element) {
   const inputValue = inputText.value;
@@ -30,7 +32,7 @@ function addToDo(element) {
 <div>
 <input type="checkbox" class="check-button" name="checkbox"/>
 <span>${inputValue}</span>
-<button class="newElement-edit-button">Edit</button>
+<button class="newElement-edit-button-${countEdit}">Edit</button>
 <button class="newElement-delete-button-${count}">Delete</button>
 
 </div>
@@ -43,11 +45,8 @@ function addToDo(element) {
   count++
   inputText.value = "";
 
-
-
   // положительный счетчик инпута Сколько всего задач
   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
-
 
   //отметка  о выполнении пункта
   const checkboxButton = newElement.querySelector("input[name='checkbox']")
@@ -63,6 +62,14 @@ function addToDo(element) {
     }
 
   })
+
+  //кнопка Редактировать
+  const editButton = document.querySelector(`.newElement-edit-button-${countEdit}`)
+  console.log(editButton)
+editButton.addEventListener('click', () => {
+})
+
+
 }
 
 // добавление пунктов по клику
@@ -74,7 +81,6 @@ container.addEventListener("submit", (event) => {
   };
 
   addToDo();
-
 
 })
 
