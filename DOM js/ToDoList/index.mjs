@@ -16,11 +16,25 @@ function deleteToDo(element) {
   element.remove();
   count--;
 
-  // отрицательный счетчик инпута
-  if ((newElement.classList.remove)) {
-   counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
-  }
+  counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
+
+// отрицательный счетчик инпута
+// if (!(element.classList.contains('inputTextChecked'))) {
+//   counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
+// } else {
+//   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
+// }
+  
+
+
+  // if (element.classList.contains('inputTextChecked')) {
+  //   counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
+  // } else {
+  //   counterDoneNum.textContent = Number(counterDoneNum.textContent) + 1
+  // }
 }
+
+
 
 
 function addToDo(element) {
@@ -46,7 +60,9 @@ function addToDo(element) {
   inputText.value = "";
 
   // положительный счетчик инпута Сколько всего задач
+  
   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
+
 
   //отметка  о выполнении пункта
   const checkboxButton = newElement.querySelector("input[name='checkbox']")
@@ -66,8 +82,8 @@ function addToDo(element) {
   //кнопка Редактировать
   const editButton = document.querySelector(`.newElement-edit-button-${countEdit}`)
   console.log(editButton)
-editButton.addEventListener('click', () => {
-})
+  editButton.addEventListener('click', () => {
+  })
 
 
 }
