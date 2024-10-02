@@ -2,7 +2,6 @@ const inputText = document.querySelector("#inputText");
 const container = document.querySelector("#container");
 const result = document.querySelector("#result");
 const counterTasksNum = document.querySelector("#counter-tasks-num");
-// const counterDone = document.querySelector("#counter-done");
 const counterDoneNum = document.querySelector("#counter-done-num");
 const newElement = document.createElement('div');
 
@@ -10,32 +9,21 @@ const newElement = document.createElement('div');
 
 let count = 1;
 let countEdit = 1;
+let countEditBtn = 1;
+
 
 
 function deleteToDo(element) {
   element.remove();
   count--;
 
-  counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
-
-// отрицательный счетчик инпута
-// if (!(element.classList.contains('inputTextChecked'))) {
-//   counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
-// } else {
-//   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
-// }
-  
-
-
-  // if (element.classList.contains('inputTextChecked')) {
-  //   counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
-  // } else {
-  //   counterDoneNum.textContent = Number(counterDoneNum.textContent) + 1
-  // }
+  // отрицательный счетчик инпута
+  if (element.classList.contains('inputTextChecked')) {
+    counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
+  } else {
+    counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
+  }
 }
-
-
-
 
 function addToDo(element) {
   const inputValue = inputText.value;
@@ -45,7 +33,7 @@ function addToDo(element) {
   newElement.innerHTML = `
 <div>
 <input type="checkbox" class="check-button" name="checkbox"/>
-<span>${inputValue}</span>
+<span class ="input-edit-text-${countEditBtn}">${inputValue}</span>
 <button class="newElement-edit-button-${countEdit}">Edit</button>
 <button class="newElement-delete-button-${count}">Delete</button>
 
@@ -60,7 +48,7 @@ function addToDo(element) {
   inputText.value = "";
 
   // положительный счетчик инпута Сколько всего задач
-  
+
   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
 
 
@@ -80,11 +68,15 @@ function addToDo(element) {
   })
 
   //кнопка Редактировать
-  const editButton = document.querySelector(`.newElement-edit-button-${countEdit}`)
-  console.log(editButton)
+  const editButton = document.querySelector(`.newElement-edit-button-${countEditBtn}`)
+  const editText = document.querySelector(`.input-edit-text-${countEdit}`)
+  console.log(editText)
   editButton.addEventListener('click', () => {
-  })
+    editText.value = inputText.textContent ;
 
+  })
+  countEdit++
+  countEditBtn++
 
 }
 
