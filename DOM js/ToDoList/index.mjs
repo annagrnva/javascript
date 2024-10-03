@@ -72,8 +72,15 @@ function addToDo(element) {
   const editText = document.querySelector(`.input-edit-text-${countEdit}`)
   console.log(editText)
   editButton.addEventListener('click', () => {
-    editText.value = inputText.textContent ;
 
+    if (editButton.textContent === 'Edit') {
+      inputText.removeAttribute('contentEditable');
+      editButton.textContent = 'Save';
+      inputText.focus();
+  } else {
+      inputText.setAttribute('contentEditable', true);
+      editButton.textContent = 'Edit';
+  }
   })
   countEdit++
   countEditBtn++
