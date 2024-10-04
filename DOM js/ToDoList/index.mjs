@@ -74,13 +74,15 @@ function addToDo(element) {
   editButton.addEventListener('click', () => {
 
     if (editButton.textContent === 'Edit') {
-      inputText.removeAttribute('contentEditable');
+      editText.value = inputText.innerText;
       editButton.textContent = 'Save';
       inputText.focus();
-  } else {
+    } else {
       inputText.setAttribute('contentEditable', true);
       editButton.textContent = 'Edit';
-  }
+    }
+
+
   })
   countEdit++
   countEditBtn++
