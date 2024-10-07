@@ -9,6 +9,7 @@ const newElement = document.createElement('div');
 
 let count = 1;
 let countEdit = 1;
+let countSave = 1;
 let countEditBtn = 1;
 
 
@@ -33,8 +34,10 @@ function addToDo(element) {
   newElement.innerHTML = `
 <div>
 <input type="checkbox" class="check-button" name="checkbox"/>
-<span class ="input-edit-text-${countEditBtn}">${inputValue}</span>
+<span class = "text-span">${inputValue}</span>
+<input type="text" class ="input-edit-text-${countEditBtn}" name="text"/>
 <button class="newElement-edit-button-${countEdit}">Edit</button>
+<button class="newElement-save-button-${countSave}" style="display:none;">Save</button>
 <button class="newElement-delete-button-${count}">Delete</button>
 
 </div>
@@ -69,22 +72,30 @@ function addToDo(element) {
 
   //кнопка Редактировать
   const editButton = document.querySelector(`.newElement-edit-button-${countEditBtn}`)
+//  const saveButton = document.querySelector(`.newElement-save-button-${countSave}`)
   const editText = document.querySelector(`.input-edit-text-${countEdit}`)
-  console.log(editText)
+  const textSpan = document.querySelector(`.text-span`)
+  let isEditing = false;
+
+  editText.style.display = 'none'
+
   editButton.addEventListener('click', () => {
+    textSpan.style.display = 'none'
+    editText.style.display = 'block'
 
-    if (editButton.textContent === 'Edit') {
-      editText.value = inputText.innerText;
-      editButton.textContent = 'Save';
-      inputText.focus();
+    if(isEditing) {
+      editText.disabled = false;
+      editText.focus();
+      editButton.textContent = "save"
     } else {
-      inputText.setAttribute('contentEditable', true);
-      editButton.textContent = 'Edit';
+      editText.disabled = true;
+      editButton.textContent = "edit"
     }
-
-
+    isEditing = !isEditing
   })
+
   countEdit++
+  // countSave++
   countEditBtn++
 
 }
@@ -100,5 +111,3 @@ container.addEventListener("submit", (event) => {
   addToDo();
 
 })
-
-
