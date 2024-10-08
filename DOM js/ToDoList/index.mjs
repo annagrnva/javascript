@@ -37,7 +37,7 @@ function addToDo(element) {
 <span class = "text-span">${inputValue}</span>
 <input type="text" class ="input-edit-text-${countEditBtn}" name="text"/>
 <button class="newElement-edit-button-${countEdit}">Edit</button>
-<button class="newElement-save-button-${countSave}" style="display:none;">Save</button>
+<button class="newElement-save-button-${countSave}">Save</button>
 <button class="newElement-delete-button-${count}">Delete</button>
 
 </div>
@@ -51,9 +51,7 @@ function addToDo(element) {
   inputText.value = "";
 
   // положительный счетчик инпута Сколько всего задач
-
   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
-
 
   //отметка  о выполнении пункта
   const checkboxButton = newElement.querySelector("input[name='checkbox']")
@@ -72,30 +70,36 @@ function addToDo(element) {
 
   //кнопка Редактировать
   const editButton = document.querySelector(`.newElement-edit-button-${countEditBtn}`)
-//  const saveButton = document.querySelector(`.newElement-save-button-${countSave}`)
+  const saveButton = document.querySelector(`.newElement-save-button-${countSave}`)
   const editText = document.querySelector(`.input-edit-text-${countEdit}`)
   const textSpan = document.querySelector(`.text-span`)
-  let isEditing = false;
 
-  editText.style.display = 'none'
+
+  editText.style.display = 'none';
+  saveButton.style.display = 'none';
 
   editButton.addEventListener('click', () => {
     textSpan.style.display = 'none'
     editText.style.display = 'block'
+    saveButton.style.display = 'block';
+  })
 
-    if(isEditing) {
-      editText.disabled = false;
-      editText.focus();
-      editButton.textContent = "save"
-    } else {
-      editText.disabled = true;
-      editButton.textContent = "edit"
-    }
-    isEditing = !isEditing
+  saveButton.addEventListener('click', (element) => {
+    const elementSave = document.createElement('div');
+      elementSave.innerHTML = `
+  <div>
+  <span class = "text-span">${inputValue}</span>
+  <input type="text" class ="input-edit-text-${countEditBtn}" name="text"/>
+  </div>
+  `
+    editButton.style.display = 'none'
+    editText.appendChild(elementSave)
+
+    console.log(elementSave)
   })
 
   countEdit++
-  // countSave++
+  countSave++
   countEditBtn++
 
 }
