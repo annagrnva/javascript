@@ -74,6 +74,8 @@ function addToDo(element) {
   const editText = document.querySelector(`.input-edit-text-${countEdit}`)
   const textSpan = document.querySelector(`.text-span`)
 
+  editText.style.display = 'none';
+
   editButton.addEventListener('click', () => {
     editText.value = textSpan.textContent;
     editText.style.display = 'block';
@@ -89,21 +91,8 @@ function addToDo(element) {
     textSpan.style.display = 'block';
     editButton.style.display = 'inline';
     saveButton.style.display = 'none';
-});
 
-  // saveButton.addEventListener('click', (element) => {
-  //   const elementSave = document.createElement('div');
-  //     elementSave.innerHTML = `
-  // <div>
-  // <span class = "text-span">${inputValue}</span>
-  // <input type="text" class ="input-edit-text-${countEditBtn}" name="text"/>
-  // </div>
-  // `
-  //   editButton.style.display = 'none'
-  //   editText.appendChild(elementSave)
-
-  //   console.log(elementSave)
-  // })
+  });
 
   countEdit++
   countSave++
