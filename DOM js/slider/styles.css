@@ -1,0 +1,52 @@
+body {}
+
+.slider-title {
+  display: flex;
+  justify-content: center;
+  font-family: Clash Display;
+  font-size: 50px;
+  font-weight: 400;
+  color: rgba(42, 37, 75, 1);
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  overflow: hidden;
+
+}
+
+.slider {
+  display: flex;
+}
+
+.img-size {
+  width: 100%;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  gap: 30px;
+}
+
+.button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid blueviolet;
+}
