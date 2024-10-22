@@ -10,9 +10,11 @@ body {}
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 15px; 
+  position: relative;
+  background-color: black;
 }
 
 .top {
@@ -21,28 +23,27 @@ body {}
   align-items: center;
 }
 
-.form {
+.slider {
   display: flex;
   align-items: center;
   max-width: 600px;
   overflow: hidden;
-  
-
 }
 
-.slider {
+.img-wrapper {
   display: flex;
   margin: 20px;
-  
+  object-fit: cover;
 }
 
-.img-size {
+.img {
   width: 100%;
-  display: none;
+  border-radius: 20px;
+  /* display: none; */
 }
 
 .img-block {
-display: block;
+/* display: block; */
 }
 
 .bottom {
