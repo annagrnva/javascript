@@ -1,25 +1,34 @@
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
-const imgWrapper= document.querySelectorAll(".img-wrapper");
+const imgWrapper = document.querySelectorAll(".img-wrapper");
 const imgs = document.querySelectorAll(".img")
 
 let slideNumber = 0;
-
-// function showSlide() {
-//  imgs.forEach(img => {
-//   img.classList.add("img-block")
-//  });
-// }
+imgs[slideNumber].classList.add('activeImg');
 
 right.addEventListener("click", () => {
+
+  slideNumber++
+  if (slideNumber >= imgs.length) {
+    slideNumber = 0
+  }
+  imgs.forEach(img => {
+    img.classList.remove("activeImg")
+  });
+
+  imgs[slideNumber].classList.add("activeImg")
+});
+
+left.addEventListener("click", () => {
+
+  slideNumber--
+  if (slideNumber < 0 ) {
+    slideNumber = imgs.length - 1
+  }
+  imgs.forEach(img => {
+    img.classList.remove("activeImg")
+  });
   
+  imgs[slideNumber].classList.add("activeImg")
 
-  // if(imgs.length == 0) {
-  //   slideNumber + 1
-  // } else {
-  //   imgs.length == slideNumber - 1
-  // }
-
-  // showSlide(slideNumber)
-})
-
+});
