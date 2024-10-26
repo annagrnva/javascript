@@ -66,3 +66,7 @@ border-radius: 20px;
   border-radius: 50%;
   border: 1px solid blueviolet;
 }
+
+.activeBtns {
+  background-color: blueviolet;
+}
