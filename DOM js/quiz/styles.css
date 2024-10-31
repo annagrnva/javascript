@@ -1,0 +1,23 @@
+body { 
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+}
+
+.quiz-container {
+width: 90%;
+max-width: 600px;
+margin: 100px auto 0;
+padding: 30px;
+border-radius: 20px;
+background-color: cornflowerblue;
+}
+
+.question {
+  font-size: 40px;
+}
+.radio-btn {
+
+}
