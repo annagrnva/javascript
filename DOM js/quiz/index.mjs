@@ -2,11 +2,11 @@ const questions = [
   {
     question: "When do children go to school?",
     answers: [
-      { text: "7yo" }, 
-      { text: "4yo" }, 
+      { text: "7yo" },
+      { text: "4yo" },
       { text: "10yo" }
     ],
-    // correct: 1,
+    correct: 1,
   },
 ];
 
@@ -19,43 +19,35 @@ questions.forEach(question => {
 
   question.answers.forEach(answer => {
     const answerElement = document.createElement('div');
-    answerElement.innerHTML = 
-    `<input type="radio" name="${question.answers}"> ${answer.text}`
+    answerElement.innerHTML =
+      `<input class="radio-btn" type="radio" value="${question.correct}" name="${question.answers}"> ${answer.text}`
 
     questionElement.appendChild(answerElement)
-//  console.log(answer)
-
   });
 
   quiz.appendChild(questionElement)
 });
 
-const button = document.createElement('button')
-button.classList.add('button')
-button.textContent = 'next'
+const radioBtnSelect = document.querySelector(`.radio-btn`)
+
+// radioBtnSelect.addEventListener('click', () => {
+//   console.log('sdf')
+// })
+
+const button = document.createElement('div')
+button.innerHTML = `
+<div class="container-btn">
+<button class="button">next</button>
+</div>
+`
+document.body.append(button)
+
 button.addEventListener('click', () => {
-  console.log('sadf')
+
+  const radioChecked = document.querySelector('input[type="radio"]:checked')
+  console.log(radioChecked)
+  if (!radioChecked) {
+    return
+  }
 })
-document.body.append("button")
 
-
-// const questionElement = document.querySelector(".question")
-// const answerElement = document.querySelectorAll(".answer-btns")
-// let questionCounter = 0;
-// let answerCounter = 0;
-
-// function showQuestion() {
-//   questionElement.textContent = question[questionCounter].question
-// }
-// showQuestion()
-
-// for(answer of question[questionCounter]['answers']) {
-// console.log(answer)
-// }
-
-
-// questionElement.forEach((answer) => {
-//   question[questionCounter]['answers']
-
-//   console.log(answer)
-// });
