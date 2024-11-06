@@ -1,38 +1,41 @@
 const questions = [
   {
     question: "When do children go to school?",
-    answers: [
-      { text: "7yo" },
-      { text: "4yo" },
-      { text: "10yo" }
-    ],
+    answers: ["7yo", "4yo", "10yo"],
     correct: 1,
+  },
+
+  {
+    question: "When is NY in Russia?",
+    answers: ["30 Dec", "31 Dec", "1 Jen"],
+    correct: 2,
   },
 ];
 
+questionIndex = 0;
 const quiz = document.querySelector(".quiz-container")
 
-questions.forEach(question => {
+function showQuestion() {
+
+  const questionData = questions[questionIndex];
   const questionElement = document.createElement('div');
   questionElement.innerHTML =
-    `<div>${question.question}</div>`;
+    `<div>${questionData.question}</div>`;
 
-  question.answers.forEach(answer => {
+  questionData.answers.forEach(answer => {
     const answerElement = document.createElement('div');
     answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" value="${question.correct}" name="${question.answers}"> ${answer.text}`
+      `<input class="radio-btn" type="radio" value="${questionData.correct}" name="${questionData.answers}"> ${answer}`
 
     questionElement.appendChild(answerElement)
   });
 
+  //     function clearQuestion() {
+  // questionElement.innerHTML = '';
+  //     }
+
   quiz.appendChild(questionElement)
-});
-
-const radioBtnSelect = document.querySelector(`.radio-btn`)
-
-// radioBtnSelect.addEventListener('click', () => {
-//   console.log('sdf')
-// })
+}
 
 const button = document.createElement('div')
 button.innerHTML = `
@@ -46,8 +49,10 @@ button.addEventListener('click', () => {
 
   const radioChecked = document.querySelector('input[type="radio"]:checked')
   console.log(radioChecked)
+
   if (!radioChecked) {
     return
   }
 })
 
+showQuestion()
