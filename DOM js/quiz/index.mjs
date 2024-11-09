@@ -12,7 +12,7 @@ const questions = [
   },
 ];
 
-questionIndex = 0;
+let questionIndex = 0;
 const quiz = document.querySelector(".quiz-container")
 
 
@@ -50,29 +50,41 @@ button.innerHTML = `
 </div>
 `
 document.body.append(button)
+const radioChecked = document.querySelector('input[type="radio"]:checked')
 
 button.addEventListener('click', () => {
   const radioChecked = document.querySelector('input[type="radio"]:checked')
   console.log(radioChecked)
-
-  
 
   if (!radioChecked) {
     inputError.innerHTML = `
 <div class="input-error">
 <span class="input-error_text">add text</span>
 </div>
-`
-  } else {
-    return 
-  }
+` } else {
+    return inputError.innerText = ""
+  };
 
-
-  
-
-//   if (!radioChecked) {
-//     return
-//   }
 })
 
+let correctAnswers = 0;
+let falseAnswers = 0;
+
+function showResults() {
+  const result = document.createElement('div')
+  result.innerHTML = 
+  `
+  <div class="result-answers">
+  <div class="correct-answers">correct answers:${correctAnswers}</div>
+  <div class="false-answers">false answers:${falseAnswers}</div>
+  </div>
+  `
+
+//  if(questions[questionIndex]['correct']) {
+//   correctAnswers++
+//  }
+  document.body.appendChild(result)
+}
+
 showQuestion()
+showResults()
