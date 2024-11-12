@@ -2,7 +2,7 @@ const questions = [
   {
     question: "When do children go to school?",
     answers: ["7yo", "4yo", "10yo"],
-    correct: 1,
+    correct: '7yo',
   },
 
   {
@@ -13,8 +13,9 @@ const questions = [
 ];
 
 let questionIndex = 0;
+let correctAnswers = 0;
+let falseAnswers = 0;
 const quiz = document.querySelector(".quiz-container")
-
 
 function showQuestion() {
 
@@ -23,25 +24,25 @@ function showQuestion() {
   questionElement.innerHTML =
     `<div>${questionData.question}</div>`;
 
+  let answerNumber = 0;
   questionData.answers.forEach(answer => {
-    const answerElement = document.createElement('div');
+    const answerElement = document.createElement('div'); 
     answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" value="${questionData.correct}" name="${questionData.answers}"> ${answer}`
-
+      `<input class="radio-btn" type="radio" value="${questionData.answers[answerNumber++]}" name="${questionData.answers}"> ${answer}`
+    // if(answerElement.value === questions[questionIndex]['correct']) {
+ 
+    // }
     questionElement.appendChild(answerElement)
   });
 
   //     function clearQuestion() {
   // questionElement.innerHTML = '';
   //     }
-
   quiz.appendChild(questionElement)
 }
 
-
 const inputError = document.createElement('div')
 document.body.append(inputError)
-
 
 const button = document.createElement('div')
 button.innerHTML = `
@@ -53,13 +54,14 @@ document.body.append(button)
 const radioChecked = document.querySelector('input[type="radio"]:checked')
 
 button.addEventListener('click', () => {
+
   const radioChecked = document.querySelector('input[type="radio"]:checked')
   console.log(radioChecked)
 
   if (!radioChecked) {
     inputError.innerHTML = `
 <div class="input-error">
-<span class="input-error_text">add text</span>
+<span class="input-error_text">choose the variant</span>
 </div>
 ` } else {
     return inputError.innerText = ""
@@ -67,22 +69,17 @@ button.addEventListener('click', () => {
 
 })
 
-let correctAnswers = 0;
-let falseAnswers = 0;
 
 function showResults() {
   const result = document.createElement('div')
-  result.innerHTML = 
-  `
+  result.innerHTML =
+    `
   <div class="result-answers">
   <div class="correct-answers">correct answers:${correctAnswers}</div>
   <div class="false-answers">false answers:${falseAnswers}</div>
   </div>
   `
 
-//  if(questions[questionIndex]['correct']) {
-//   correctAnswers++
-//  }
   document.body.appendChild(result)
 }
 
