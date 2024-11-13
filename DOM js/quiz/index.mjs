@@ -18,10 +18,10 @@ let falseAnswers = 0;
 const quiz = document.querySelector(".quiz-container")
 const questionElement = document.createElement('div');
 const answerElement = document.createElement('div');
+const radioChecked = document.querySelector('input[type="radio"]:checked')
 
 
 function showQuestion() {
-
   const questionData = questions[questionIndex];
   const questionElement = document.createElement('div');
   questionElement.innerHTML =
@@ -38,9 +38,7 @@ function showQuestion() {
     // }
     questionElement.appendChild(answerElement)
   });
-
-
-  quiz.appendChild(questionElement)
+  quiz.appendChild(questionElement);
 };
 
 function clearQuestion() {
@@ -71,18 +69,7 @@ function showError() {
 ` } else {
     return inputError.innerText = ""
   };
-}
-
-button.addEventListener('click', () => {
-  if (questionIndex !== questions.length - 1) {
-    showError()
-    clearQuestion()
-    showQuestion()
-  }
-
-
-})
-
+};
 
 function showResults() {
   const result = document.createElement('div')
@@ -93,9 +80,15 @@ function showResults() {
   <div class="false-answers">false answers:${falseAnswers}</div>
   </div>
   `
-
   document.body.appendChild(result)
-}
+};
 
-// showQuestion()
+
+showQuestion()
+button.addEventListener('click', () => {
+  showError()
+  // questionIndex = questionIndex + 1
+  clearQuestion()
+
+})
 showResults()

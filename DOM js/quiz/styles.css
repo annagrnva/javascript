@@ -31,6 +31,7 @@ body {
   font-size: 15px;
   background-color: rgb(2, 39, 39);
   color: white;
+  border-radius: 10px;
 }
 
 .input-error {
