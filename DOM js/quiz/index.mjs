@@ -13,6 +13,7 @@ const questions = [
 ];
 
 let questionIndex = 0;
+ let answerNumber = 0;
 let correctAnswers = 0;
 let falseAnswers = 0;
 const quiz = document.querySelector(".quiz-container")
@@ -27,11 +28,10 @@ function showQuestion() {
   questionElement.innerHTML =
     `<div>${questionData.question}</div>`;
 
-  let answerNumber = 0;
   questionData.answers.forEach(answer => {
     const answerElement = document.createElement('div');
     answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" value="${questionData.answers[answerNumber++]}" name="${questionData.answers}"> ${answer}`
+      `<input class="radio-btn" type="radio" value="${questionData.answers[answerNumber]}" name="${questionData.answers}"> ${answer}`
 
     // if(answerElement.value === questions[questionIndex]['correct']) {
 
@@ -39,11 +39,17 @@ function showQuestion() {
     questionElement.appendChild(answerElement)
   });
   quiz.appendChild(questionElement);
+
 };
 
 function clearQuestion() {
   questionElement.innerHTML = '';
   answerElement.innerHTML = '';
+// if (questionIndex <= questions.length - 1) {
+//     questionIndex++;
+//     questionElement.textContent = questions[questionIndex]
+//   }
+
 };
 
 const inputError = document.createElement('div')
@@ -85,10 +91,16 @@ function showResults() {
 
 
 showQuestion()
-button.addEventListener('click', () => {
-  showError()
-  // questionIndex = questionIndex + 1
-  clearQuestion()
 
+button.addEventListener('click', () => {
+
+if (questionIndex <= questions.length - 1) {
+     clearQuestion()
+    questionIndex++;
+    questionElement.textContent = questions[questionIndex]
+    showQuestion()
+  }
+  showError()
+  // clearQuestion()
 })
 showResults()

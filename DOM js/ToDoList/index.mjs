@@ -3,16 +3,8 @@ const container = document.querySelector("#container");
 const result = document.querySelector("#result");
 const counterTasksNum = document.querySelector("#counter-tasks-num");
 const counterDoneNum = document.querySelector("#counter-done-num");
-const newElement = document.createElement('div');
-
-
 
 let count = 1;
-let countEdit = 1;
-let countSave = 1;
-let countEditBtn = 1;
-
-
 
 function deleteToDo(element) {
   element.remove();
@@ -24,20 +16,32 @@ function deleteToDo(element) {
   } else {
     counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
   }
-}
+};
+
+function toggleCompleteStatusToDo(element) {
+    if (!(element.classList.contains('inputTextChecked'))) {
+      element.classList.add('inputTextChecked')
+      counterDoneNum.textContent = Number(counterDoneNum.textContent) + 1
+      counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
+    } else {
+      element.classList.remove('inputTextChecked')
+      counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
+      counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
+    };
+};
+
 
 function addToDo(element) {
   const inputValue = inputText.value;
   const newElement = document.createElement('div');
 
-
   newElement.innerHTML = `
 <div>
 <input type="checkbox" class="check-button" name="checkbox"/>
-<span class = "text-span">${inputValue}</span>
-<input type="text" class ="input-edit-text-${countEditBtn}" name="text"/>
-<button class="newElement-edit-button-${countEdit}">Edit</button>
-<button class="newElement-save-button-${countSave}" style="display:none;">Save</button>
+<span class = "text-span-${count}">${inputValue}</span>
+<input type="text" class ="input-edit-text-${count}" name="text"/>
+<button class="newElement-edit-button-${count}">Edit</button>
+<button class="newElement-save-button-${count}" style="display:none;">Save</button>
 <button class="newElement-delete-button-${count}">Delete</button>
 
 </div>
@@ -45,59 +49,46 @@ function addToDo(element) {
   result.appendChild(newElement);
 
   // удаление пунктов
-  const deleteButton = document.querySelector(`.newElement-delete-button-${count}`)
+  const deleteButton = document.querySelector(
+    `.newElement-delete-button-${count}`
+  );
   deleteButton.addEventListener('click', () => deleteToDo(newElement))
-  count++
-  inputText.value = "";
-
-  // положительный счетчик инпута Сколько всего задач
-  counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
 
   //отметка  о выполнении пункта
   const checkboxButton = newElement.querySelector("input[name='checkbox']")
-  checkboxButton.addEventListener('click', () => {
-    if (!(newElement.classList.contains('inputTextChecked'))) {
-      newElement.classList.add('inputTextChecked')
-      counterDoneNum.textContent = Number(counterDoneNum.textContent) + 1
-      counterTasksNum.textContent = Number(counterTasksNum.textContent) - 1
-    } else {
-      newElement.classList.remove('inputTextChecked')
-      counterDoneNum.textContent = Number(counterDoneNum.textContent) - 1
-      counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
-    }
-
-  })
+  checkboxButton.addEventListener('click', () => 
+    toggleCompleteStatusToDo(newElement));
 
   //кнопка Редактировать
-  const editButton = document.querySelector(`.newElement-edit-button-${countEditBtn}`)
-  const saveButton = document.querySelector(`.newElement-save-button-${countSave}`)
-  const editText = document.querySelector(`.input-edit-text-${countEdit}`)
-  const textSpan = document.querySelector(`.text-span`)
+  const editButton = document.querySelector(`.newElement-edit-button-${count}`)
+  const saveButton = document.querySelector(`.newElement-save-button-${count}`)
+  const editText = document.querySelector(`.input-edit-text-${count}`)
+  const textSpan = document.querySelector(`.text-span-${count}`)
 
   editText.style.display = 'none';
 
   editButton.addEventListener('click', () => {
     editText.value = textSpan.textContent;
-    editText.style.display = 'block';
+    editText.style.display = 'inline-block';
     textSpan.style.display = 'none';
     editButton.style.display = 'none';
     saveButton.style.display = 'inline';
 
-  })
+  });
 
   saveButton.addEventListener('click', () => {
     textSpan.textContent = editText.value;
     editText.style.display = 'none';
-    textSpan.style.display = 'block';
+    textSpan.style.display = 'inline-block';
     editButton.style.display = 'inline';
     saveButton.style.display = 'none';
 
   });
 
-  countEdit++
-  countSave++
-  countEditBtn++
-
+  count++
+  inputText.value = "";
+   // положительный счетчик инпута Сколько всего задач
+   counterTasksNum.textContent = Number(counterTasksNum.textContent) + 1
 }
 
 // добавление пунктов по клику
