@@ -54,6 +54,7 @@ display: flex;
   justify-content: center;
   margin: 15px;
   gap: 30px;
+  padding-bottom: 20px;
 }
 
 .buttonCircle {
