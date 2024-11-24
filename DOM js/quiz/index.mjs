@@ -13,7 +13,7 @@ const questions = [
 ];
 
 let questionIndex = 0;
- let answerNumber = 0;
+let answerNumber = 0;
 let correctAnswers = 0;
 let falseAnswers = 0;
 const quiz = document.querySelector(".quiz-container")
@@ -31,12 +31,10 @@ function showQuestion() {
   questionData.answers.forEach(answer => {
     const answerElement = document.createElement('div');
     answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" value="${questionData.answers[answerNumber]}" name="${questionData.answers}"> ${answer}`
+      `<input class="radio-btn" type="radio" value="${questionData.answers[answerNumber]}
+      "name="${questionData.answers}"> ${answer}`
 
-    // if(answerElement.value === questions[questionIndex]['correct']) {
-
-    // }
-    questionElement.appendChild(answerElement)
+    questionElement.appendChild(answerElement);
   });
   quiz.appendChild(questionElement);
 
@@ -45,26 +43,26 @@ function showQuestion() {
 function clearQuestion() {
   questionElement.innerHTML = '';
   answerElement.innerHTML = '';
-// if (questionIndex <= questions.length - 1) {
-//     questionIndex++;
-//     questionElement.textContent = questions[questionIndex]
-//   }
+  // if (questionIndex <= questions.length - 1) {
+  //     questionIndex++;
+  //     questionElement.textContent = questions[questionIndex]
+  //   }
 
 };
 
-const inputError = document.createElement('div')
-document.body.append(inputError)
+const inputError = document.createElement('div');
+document.body.append(inputError);
 
-const button = document.createElement('div')
+const button = document.createElement('div');
 button.innerHTML = `
 <div class="container-btn">
 <button class="button">next</button>
 </div>
 `
-document.body.append(button)
+document.body.append(button);
 
 function showError() {
-  const radioChecked = document.querySelector('input[type="radio"]:checked')
+  const radioChecked = document.querySelector('input[type="radio"]:checked');
   console.log(radioChecked)
 
   if (!radioChecked) {
@@ -73,12 +71,12 @@ function showError() {
 <span class="input-error_text">choose the variant</span>
 </div>
 ` } else {
-    return inputError.innerText = ""
+    return inputError.innerText = "";
   };
 };
 
 function showResults() {
-  const result = document.createElement('div')
+  const result = document.createElement('div');
   result.innerHTML =
     `
   <div class="result-answers">
@@ -86,21 +84,18 @@ function showResults() {
   <div class="false-answers">false answers:${falseAnswers}</div>
   </div>
   `
-  document.body.appendChild(result)
+  document.body.appendChild(result);
 };
 
 
 showQuestion()
-
 button.addEventListener('click', () => {
-
-if (questionIndex <= questions.length - 1) {
-     clearQuestion()
-    questionIndex++;
-    questionElement.textContent = questions[questionIndex]
-    showQuestion()
-  }
   showError()
-  // clearQuestion()
-})
+  // questionElement.textContent = questions[questionIndex + 1];
+  clearQuestion()
+  if (questionIndex <= questions.length - 1) {
+    questions[questionIndex + 1];
+    showQuestion()
+  };
+});
 showResults()
