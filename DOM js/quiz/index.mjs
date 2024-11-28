@@ -2,43 +2,45 @@ const questions = [
   {
     question: "When do children go to school?",
     answers: ["7yo", "4yo", "10yo"],
-    correct: 1,
+    correct: "7yo",
   },
 
   {
     question: "When is NY in Russia?",
     answers: ["30 Dec", "31 Dec", "1 Jen"],
-    correct: 2,
+    correct: "31 Dec",
   },
 ];
 
 
 const quiz = document.querySelector(".quiz-container");
+const quizForm = document.querySelector(".quiz-form")
 const nextBtn = document.querySelector('.next-btn');
-const questionElement = document.createElement('div');
-const answerElement = document.createElement('div');
 const radioChecked = document.querySelector('input[type="radio"]:checked');
 
 let questionIndex = 0;
-let answerNumber = 0;
 let correctAnswers = 0;
 let falseAnswers = 0;
 
-function showQuestion() {
-  const questionData = questions[questionIndex];
-  const questionElement = document.createElement('div');
-  questionElement.innerHTML =
-    `<div>${questionData.question}</div>`;
+function showQuestion(questionNumber) {
 
-  questionData.answers.forEach((answer, index) => {
-    const answerElement = document.createElement('div');
-    answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" value="${questionData.answers[index++]}
-      "name="${questionData.answers}"> ${answer}`
-
-    questionElement.appendChild(answerElement);
+  questions[questionNumber].answers.forEach((answer, index) => {
+    quizForm.innerHTML = `
+   <div>${questions[questionNumber].question}</div>
+   <input type="radio" value="${questions[questionNumber].answers[index]}
+     "name="${questions[questionNumber].answers}"> ${answer};
+       <input type="radio" value="${questions[questionNumber].answers[index]}
+     "name="${questions[questionNumber].answers}"> ${answer};
+       <input type="radio" value="${questions[questionNumber].answers[index]}
+     "name="${questions[questionNumber].answers}"> ${answer};
+  `
   });
-  quiz.appendChild(questionElement);
+
+  // questionData.answers.forEach((answer, index) => {
+  //   const answerElement = document.createElement('div');
+  //   answerElement.innerHTML =
+  //     `<input class="radio-btn" type="radio" value="${questionData.answers[index++]}
+  //     "name="${questionData.answers}"> ${answer}`
 
 };
 
@@ -72,20 +74,23 @@ function showResults() {
 };
 
 nextBtn.addEventListener('click', () => {
-  showError()
+
   if (questionIndex === questions.length - 1) {
     questionIndex = 0;
   } else {
     questionIndex += 1;
-    showQuestion(questionIndex)
+
   };
+  showQuestion(questionIndex);
+  showError()
 });
+
 showResults()
 
 const init = () => {
   showQuestion(0)
-}
-init()
+};
+init();
 
 
 

@@ -19,7 +19,8 @@ body {
   font-size: 40px;
 }
 
-.radio-btn {}
+.radio-btn {
+}
 
 .container-btn {
   display: flex;
