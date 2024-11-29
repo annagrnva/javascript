@@ -16,32 +16,24 @@ const questions = [
 const quiz = document.querySelector(".quiz-container");
 const quizForm = document.querySelector(".quiz-form")
 const nextBtn = document.querySelector('.next-btn');
-const radioChecked = document.querySelector('input[type="radio"]:checked');
 
 let questionIndex = 0;
 let correctAnswers = 0;
 let falseAnswers = 0;
 
 function showQuestion(questionNumber) {
+  quizForm.innerHTML = `
+ <div>${questions[questionNumber].question}</div>
+ `;
 
   questions[questionNumber].answers.forEach((answer, index) => {
-    quizForm.innerHTML = `
-   <div>${questions[questionNumber].question}</div>
-   <input type="radio" value="${questions[questionNumber].answers[index]}
-     "name="${questions[questionNumber].answers}"> ${answer};
-       <input type="radio" value="${questions[questionNumber].answers[index]}
-     "name="${questions[questionNumber].answers}"> ${answer};
-       <input type="radio" value="${questions[questionNumber].answers[index]}
-     "name="${questions[questionNumber].answers}"> ${answer};
+    const answerElement = document.createElement('div');
+    answerElement.innerHTML =
+      `<input class="radio-btn" type="radio" 
+      "name="question${questionNumber}"> ${answer}
   `
+    quizForm.appendChild(answerElement);
   });
-
-  // questionData.answers.forEach((answer, index) => {
-  //   const answerElement = document.createElement('div');
-  //   answerElement.innerHTML =
-  //     `<input class="radio-btn" type="radio" value="${questionData.answers[index++]}
-  //     "name="${questionData.answers}"> ${answer}`
-
 };
 
 const inputError = document.createElement('div');
@@ -56,8 +48,11 @@ function showError() {
 <div class="input-error">
 <span class="input-error_text">choose the variant</span>
 </div>
-` } else {
-    return inputError.innerText = "";
+
+`
+  } else {
+    inputError.innerText = "";
+    questionIndex += 1
   };
 };
 
@@ -74,15 +69,15 @@ function showResults() {
 };
 
 nextBtn.addEventListener('click', () => {
-
-  if (questionIndex === questions.length - 1) {
+  
+  if (questionIndex === questions.length) {
+    // console.log('конец вопросов')
     questionIndex = 0;
   } else {
-    questionIndex += 1;
-
+    showError()
   };
+
   showQuestion(questionIndex);
-  showError()
 });
 
 showResults()
