@@ -16,6 +16,7 @@ const questions = [
 const quiz = document.querySelector(".quiz-container");
 const quizForm = document.querySelector(".quiz-form")
 const nextBtn = document.querySelector('.next-btn');
+const radioChecked = document.querySelector('input[type="radio"]:checked');
 
 let questionIndex = 0;
 let correctAnswers = 0;
@@ -56,8 +57,18 @@ function showError() {
   };
 };
 
-function showResults() {
+let userAnswers = ["7yo", "31 Dec"];
+
+function showResults(questions, userAnswers) {
   const result = document.createElement('div');
+  questions.forEach((question, index) => {
+    if (userAnswers[index] === question.correct) {
+      correctAnswers += 1;
+    } else {
+      falseAnswers += 1;
+    }
+  });
+
   result.innerHTML =
     `
   <div class="result-answers">
@@ -69,7 +80,7 @@ function showResults() {
 };
 
 nextBtn.addEventListener('click', () => {
-  
+
   if (questionIndex === questions.length) {
     // console.log('конец вопросов')
     questionIndex = 0;
@@ -78,9 +89,8 @@ nextBtn.addEventListener('click', () => {
   };
 
   showQuestion(questionIndex);
+  showResults(questions, userAnswers)
 });
-
-showResults()
 
 const init = () => {
   showQuestion(0)
