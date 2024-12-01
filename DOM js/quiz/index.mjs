@@ -49,11 +49,9 @@ function showError() {
 <div class="input-error">
 <span class="input-error_text">choose the variant</span>
 </div>
-
 `
   } else {
     inputError.innerText = "";
-    questionIndex += 1
   };
 };
 
@@ -69,6 +67,7 @@ function showResults(questions, userAnswers) {
     }
   });
 
+
   result.innerHTML =
     `
   <div class="result-answers">
@@ -81,15 +80,14 @@ function showResults(questions, userAnswers) {
 
 nextBtn.addEventListener('click', () => {
 
-  if (questionIndex === questions.length) {
-    // console.log('конец вопросов')
-    questionIndex = 0;
+  if (questionIndex === questions.length - 1) {
+    questionIndex === 0;  
+    showResults(questions, userAnswers)
   } else {
-    showError()
+    questionIndex += 1
   };
-
+  showError();
   showQuestion(questionIndex);
-  showResults(questions, userAnswers)
 });
 
 const init = () => {
