@@ -58,35 +58,37 @@ function showError() {
 let userAnswers = ["7yo", "31 Dec"];
 
 function showResults(questions, userAnswers) {
-  const result = document.createElement('div');
+
   questions.forEach((question, index) => {
     if (userAnswers[index] === question.correct) {
       correctAnswers += 1;
+      // console.log('correct', correctAnswers)
     } else {
       falseAnswers += 1;
     }
-  });
 
-
-  result.innerHTML =
-    `
+    const result = document.createElement('div');
+    result.innerHTML =
+      `
   <div class="result-answers">
   <div class="correct-answers">correct answers:${correctAnswers}</div>
   <div class="false-answers">false answers:${falseAnswers}</div>
   </div>
   `
-  document.body.appendChild(result);
+    document.body.appendChild(result);
+  });
 };
 
 nextBtn.addEventListener('click', () => {
 
+  showError();
   if (questionIndex === questions.length - 1) {
-    questionIndex === 0;  
+    questionIndex === 0;
     showResults(questions, userAnswers)
   } else {
     questionIndex += 1
   };
-  showError();
+
   showQuestion(questionIndex);
 });
 
