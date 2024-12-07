@@ -28,11 +28,11 @@ function showQuestion(questionNumber) {
  <div>${questions[questionNumber].question}</div>
  `;
 
-  questions[questionNumber].answers.forEach((answer, index) => {
+  questions[questionNumber].answers.forEach((answer) => {
     const answerElement = document.createElement('div');
-    answerElement.innerHTML =
-      `<input class="radio-btn" type="radio" 
-      "name="question${questionNumber}"> ${answer}
+    answerElement.innerHTML = `
+    <input class="radio-btn" type="radio" 
+    "name="question${questionNumber}"> ${answer}
   `
     quizForm.appendChild(answerElement);
   });
@@ -56,16 +56,16 @@ function showError() {
   };
 };
 
-function showResults(questions, userAnswers) {
+function showResults() {
 
   questions.forEach((question, index) => {
-    if (userAnswers[index] === question.correct) {
+    if (index === question.correct) {
       correctAnswers += 1;
     } else {
       falseAnswers += 1;
     }
   });
-  
+
   result.innerHTML =
     `
   <div class="result-answers">
@@ -73,11 +73,9 @@ function showResults(questions, userAnswers) {
   <div class="false-answers">false answers:${falseAnswers}</div>
   </div>
   `
-  document.body.appendChild(result);
 };
 
 nextBtn.addEventListener('click', () => {
-
   showError();
   if (questionIndex === questions.length - 1) {
     questionIndex === 0;
