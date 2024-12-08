@@ -55,15 +55,14 @@ function showError() {
     inputError.innerText = "";
   };
 };
-
-function showResults() {
-
+// let userAnswers = questions.push()
+function showResults(questions,userAnswers) {
   questions.forEach((question, index) => {
-    if (index === question.correct) {
-      correctAnswers += 1;
+    if (userAnswers[index] === question.correct) {
+      correctAnswers = correctAnswers += 1;
     } else {
-      falseAnswers += 1;
-    }
+      falseAnswers = falseAnswers += 1;
+    };
   });
 
   result.innerHTML =
@@ -79,7 +78,7 @@ nextBtn.addEventListener('click', () => {
   showError();
   if (questionIndex === questions.length - 1) {
     questionIndex === 0;
-    showResults(questions)
+    showResults(questions, userAnswers)
   } else {
     questionIndex += 1
   };
