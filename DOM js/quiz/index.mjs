@@ -16,7 +16,7 @@ const questions = [
 const quiz = document.querySelector(".quiz-container");
 const quizForm = document.querySelector(".quiz-form")
 const nextBtn = document.querySelector('.next-btn');
-const radioChecked = document.querySelector('input[type="radio"]:checked');
+
 const result = document.querySelector(".result");
 
 let questionIndex = 0;
@@ -55,14 +55,21 @@ function showError() {
     inputError.innerText = "";
   };
 };
-// let userAnswers = questions.push()
-function showResults(questions,userAnswers) {
-  questions.forEach((question, index) => {
-    if (userAnswers[index] === question.correct) {
+
+const userAnswers = [];
+function addAnswer(answer) {
+  userAnswers.push(answer);
+}
+
+function showResults() {
+
+  userAnswers.forEach((answer) => {
+    if (answer === questions.correct) {
       correctAnswers = correctAnswers += 1;
     } else {
       falseAnswers = falseAnswers += 1;
     };
+
   });
 
   result.innerHTML =
@@ -76,14 +83,20 @@ function showResults(questions,userAnswers) {
 
 nextBtn.addEventListener('click', () => {
   showError();
+  // const radioChecked = document.querySelector('input[type="radio"]:checked');
+  // console.log(radioChecked) 
+  addAnswer(radioChecked)
   if (questionIndex === questions.length - 1) {
     questionIndex === 0;
-    showResults(questions, userAnswers)
+   
+   
+    showResults()
   } else {
     questionIndex += 1
   };
 
   showQuestion(questionIndex);
+  
 });
 
 const init = () => {
