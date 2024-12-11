@@ -22,6 +22,7 @@ const result = document.querySelector(".result");
 let questionIndex = 0;
 let correctAnswers = 0;
 let falseAnswers = 0;
+const userAnswers = [];
 
 function showQuestion(questionNumber) {
   quizForm.innerHTML = `
@@ -32,7 +33,7 @@ function showQuestion(questionNumber) {
     const answerElement = document.createElement('div');
     answerElement.innerHTML = `
     <input class="radio-btn" type="radio" 
-    "name="question${questionNumber}"> ${answer}
+    "name="question" value ="${questions[questionNumber].correct}"> ${answer}
   `
     quizForm.appendChild(answerElement);
   });
@@ -43,7 +44,6 @@ document.body.append(inputError);
 
 function showError() {
   const radioChecked = document.querySelector('input[type="radio"]:checked');
-  console.log(radioChecked)
 
   if (!radioChecked) {
     inputError.innerHTML = `
@@ -56,10 +56,12 @@ function showError() {
   };
 };
 
-const userAnswers = [];
+
+
 function addAnswer(answer) {
   userAnswers.push(answer);
-}
+
+};
 
 function showResults() {
 
@@ -83,20 +85,23 @@ function showResults() {
 
 nextBtn.addEventListener('click', () => {
   showError();
-  // const radioChecked = document.querySelector('input[type="radio"]:checked');
-  // console.log(radioChecked) 
-  addAnswer(radioChecked)
+  const radioChecked = document.querySelector('input[type="radio"]:checked');
+  let radioCheckedValue = radioChecked.value
+  // console.log('radioChecked', radioCheckedValue)
+  if (radioCheckedValue === questions.correct) {
+    correctAnswers += 1;
+  } else {
+    falseAnswers += 1;
+  }
+  addAnswer(radioCheckedValue);
+
   if (questionIndex === questions.length - 1) {
     questionIndex === 0;
-   
-   
     showResults()
   } else {
     questionIndex += 1
   };
-
   showQuestion(questionIndex);
-  
 });
 
 const init = () => {
