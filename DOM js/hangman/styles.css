@@ -23,3 +23,22 @@ body {
   background-color: rgb(20, 54, 23);
   color: white;
 }
+
+.hangman-alphabet_btns {
+  display: flex;
+  gap: 5px;
+  margin: 20px;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border: 0.5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+} 
+.btn:hover {
+  background-color: white;
+}

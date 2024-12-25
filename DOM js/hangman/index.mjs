@@ -1,17 +1,16 @@
 const word = 'london';
 
-const alphabet = 'a b c'
-// 'd', 'e', 'f', 'g', 'h',
-//   'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-//   'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-//   'y', 'z'
-;
+// const alphabet = ['a', 'b', 'c', 'd', 
+// 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
+// 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
+// 'u', 'v', 'w', 'x', 'y', 'z'];
 
 
 let liveCounter = 0;
 let usersAnswers = [];
 const wordField = document.querySelector(".hangman-word");
-const alphabetField = document.querySelector(".hangman-alphabet_btns")
+//const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
+const btns = document.querySelectorAll(".btn")
 
 function showField() {
   let field = word.split('')
@@ -25,15 +24,32 @@ function showField() {
       }
     )
     .join(' ')
-    wordField.innerHTML = `${field}`
+  wordField.innerHTML = `${field}`
   console.log(field)
 };
 
-
-alphabetField.innerHTML = alphabet
-console.log(alphabetField)
-
-alphabetField.addEventListener("click", () => {
-  
+function showAlphabet() {
+  btns.forEach(btn => {
+  btn.addEventListener('click', (btn) => {
+    let currentBtn = btn.currentTarget
+    console.log(currentBtn)
+  })
 })
+}
+
+
+
+// function showAlphabet() {
+//   alphabetBtn.innerHTML = alphabet
+//   console.log(alphabetBtn)
+
+//   alphabetBtn.addEventListener("click", () => {
+
+//   })
+// }
+
+const init = () => {
+};
+init();
 showField()
+showAlphabet()
