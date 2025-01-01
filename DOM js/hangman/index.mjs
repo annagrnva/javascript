@@ -1,4 +1,4 @@
-const word = 'london';
+const word = 'javascript';
 
 const alphabet = ['a', 'b', 'c', 'd',
   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -43,9 +43,14 @@ function showAlphabet() {
     const button = document.createElement('div');
     button.classList.add('btn')
     button.textContent = letter;
-
+    let idxAlphabet = alphabet.indexOf(letter)
+    let idxWord = word.indexOf(letter)
     button.addEventListener('click', () => {
-      wordField.textContent += letter
+      // console.log(letter)
+
+      if (idxAlphabet == idxWord) {
+      }
+
     })
     alphabetBtn.appendChild(button)
   })
