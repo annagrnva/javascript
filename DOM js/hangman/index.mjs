@@ -1,4 +1,4 @@
-const word = 'javascript';
+const word = 'cat';
 
 const alphabet = ['a', 'b', 'c', 'd',
   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -6,7 +6,7 @@ const alphabet = ['a', 'b', 'c', 'd',
   'u', 'v', 'w', 'x', 'y', 'z'];
 
 
-let liveCounter = 0;
+let liveCounter = 6;
 let usersAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
@@ -25,7 +25,6 @@ function showField() {
     )
     .join(' ')
   wordField.innerHTML = `${field}`
-  console.log(field)
 };
 
 // function showAlphabet() {
@@ -43,15 +42,16 @@ function showAlphabet() {
     const button = document.createElement('div');
     button.classList.add('btn')
     button.textContent = letter;
-    let idxAlphabet = alphabet.indexOf(letter)
+    // let idxAlphabet = alphabet.indexOf(letter)
     let idxWord = word.indexOf(letter)
+
     button.addEventListener('click', () => {
-      // console.log(letter)
+      if (idxWord != -1) {
+        usersAnswers[idxWord] = letter
+      };
+      wordField[idxWord].textContent = letter
+    });
 
-      if (idxAlphabet == idxWord) {
-      }
-
-    })
     alphabetBtn.appendChild(button)
   })
 }
