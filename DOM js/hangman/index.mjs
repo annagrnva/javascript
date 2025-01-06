@@ -1,4 +1,4 @@
-const word = ['cat'];
+const word = 'cat';
 
 const alphabet = ['a', 'b', 'c', 'd',
   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -13,20 +13,15 @@ const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
 
 // const btns = document.querySelectorAll(".btn")
 
-// function showField() {
-//   let field = word.split('')
-//     .map(
-//       function (letter) {
-//         if (usersAnswers.includes(letter)) {
-//           return letter
-//         } else {
-//           return '_'
-//         }
-//       }
-//     )
-//     .join(' ')
-//   wordField.innerHTML = `${field}`
-// };
+function showField() {
+
+  for (let i = 0; i < word.length; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('hangman-word_line');
+    cell.textContent = '_';
+    wordField.appendChild(cell)
+  };
+};
 
 // function showAlphabet() {
 //   btns.forEach(btn => {
@@ -39,7 +34,6 @@ const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
 // }
 
 const lines = document.querySelectorAll(".hangman-word_line")
-console.log(lines)
 function showAlphabet() {
   alphabet.forEach(letter => {
     const button = document.createElement('div');
@@ -50,19 +44,17 @@ function showAlphabet() {
 
     button.addEventListener('click', () => {
       if (idxWord != -1) {
-        console.log(usersAnswers[idxWord] = letter)
+        usersAnswers[idxWord] = letter
       };
 
-      lines.forEach(line => {
-        console.log(line[idxWord] += letter)
-      })
-    })
+      lines[idxWord].textContent = letter
+    });
     alphabetBtn.appendChild(button)
   })
-}
+};
 
 const init = () => {
   showAlphabet()
 };
 init();
-// showField()
+showField()
