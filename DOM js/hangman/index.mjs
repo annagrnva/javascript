@@ -7,11 +7,12 @@ const alphabet = ['a', 'b', 'c', 'd',
 
 
 let liveCounter = 6;
-let usersAnswers = [];
+let userAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
 
 // const btns = document.querySelectorAll(".btn")
+
 
 function showField() {
 
@@ -32,8 +33,12 @@ function showField() {
 //   })
 // })
 // }
+function lifeCount() {
+  const counter = document.querySelector(".hangman-live_counter");
+  counter.classList.add(".hangman-live_counter")
+  counter.textContent = `You have ${liveCounter} lives left`
+};
 
-const lines = document.querySelectorAll(".hangman-word_line")
 function showAlphabet() {
   alphabet.forEach(letter => {
     const button = document.createElement('div');
@@ -43,17 +48,30 @@ function showAlphabet() {
     let idxWord = word.indexOf(letter)
 
     button.addEventListener('click', () => {
+      const lines = document.querySelectorAll(".hangman-word_line")
+
+
       if (idxWord != -1) {
-        usersAnswers[idxWord] = letter
+        userAnswers[idxWord] = letter
+      } else {
+        lifeCount(
+          liveCounter = liveCounter - 1
+        )
+        // counter.textContent = `You have ${liveCounter} lives left`
+
+
       };
 
       lines[idxWord].textContent = letter
     });
     alphabetBtn.appendChild(button)
+
   })
 };
 
+
 const init = () => {
+
   showAlphabet()
 };
 init();
