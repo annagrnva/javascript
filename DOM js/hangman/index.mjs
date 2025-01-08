@@ -36,7 +36,11 @@ function showField() {
 function lifeCount() {
   const counter = document.querySelector(".hangman-live_counter");
   counter.classList.add(".hangman-live_counter")
-  counter.textContent = `You have ${liveCounter} lives left`
+  counter.textContent = `You have ${liveCounter} lives left`;
+  if (liveCounter > 0) {
+    liveCounter = liveCounter - 1
+  }
+
 };
 
 function showAlphabet() {
@@ -49,26 +53,27 @@ function showAlphabet() {
 
     button.addEventListener('click', () => {
       const lines = document.querySelectorAll(".hangman-word_line")
-
-
       if (idxWord != -1) {
         userAnswers[idxWord] = letter
       } else {
-        lifeCount(
-          liveCounter = liveCounter - 1
-        )
-        // counter.textContent = `You have ${liveCounter} lives left`
-
-
+        lifeCount();
       };
 
-      lines[idxWord].textContent = letter
+      lines[idxWord].textContent = letter;
+
+      const gameResult = document.querySelector(".hangman-result-game")
+      if (liveCounter === 0) {
+        gameResult.textContent = 'You lose the game'
+      } else if (lines.includes(letter)) {
+        gameResult.textContent = 'You win the game'
+
+      }
+
     });
     alphabetBtn.appendChild(button)
 
   })
 };
-
 
 const init = () => {
 
