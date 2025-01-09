@@ -62,13 +62,12 @@ function showAlphabet() {
       lines[idxWord].textContent = letter;
 
       const gameResult = document.querySelector(".hangman-result-game")
-      if (liveCounter === 0) {
+      if (liveCounter === 0 ) {
         gameResult.textContent = 'You lose the game'
-      } else if (lines.includes(letter)) {
+
+      } else if (userAnswers.length === word.length) {
         gameResult.textContent = 'You win the game'
-
-      }
-
+      };
     });
     alphabetBtn.appendChild(button)
 
