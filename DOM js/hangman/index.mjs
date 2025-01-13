@@ -10,7 +10,6 @@ let liveCounter = 6;
 let userAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
-
 // const btns = document.querySelectorAll(".btn")
 
 
@@ -40,6 +39,7 @@ function lifeCount() {
   if (liveCounter > 0) {
     liveCounter = liveCounter - 1
   }
+  checkGameOver()
 
 };
 
@@ -60,19 +60,21 @@ function showAlphabet() {
       };
 
       lines[idxWord].textContent = letter;
-
-      const gameResult = document.querySelector(".hangman-result-game")
-      if (liveCounter === 0 ) {
-        gameResult.textContent = 'You lose the game'
-
-      } else if (userAnswers.length === word.length) {
-        gameResult.textContent = 'You win the game'
-      };
+      checkGameOver()
     });
+
     alphabetBtn.appendChild(button)
 
   })
 };
+function checkGameOver() {
+  const gameResult = document.querySelector(".hangman-result-game")
+  if (liveCounter <= 0) {
+   gameResult.textContent = 'You lose the game'
+  } else if (userAnswers.length === word.length) {
+    gameResult.textContent = 'You win the game'
+  };
+}
 
 const init = () => {
 
