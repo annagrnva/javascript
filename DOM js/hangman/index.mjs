@@ -11,7 +11,7 @@ let userAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns")
 // const btns = document.querySelectorAll(".btn")
-
+let gameActive = true;
 
 function showField() {
 
@@ -42,6 +42,9 @@ function lifeCount() {
   checkGameOver()
 
 };
+function checkButtonClick() {
+  if (!gameActive) return;
+}
 
 function showAlphabet() {
   alphabet.forEach(letter => {
@@ -61,6 +64,9 @@ function showAlphabet() {
 
       lines[idxWord].textContent = letter;
       checkGameOver()
+      checkButtonClick()
+  //  console.log('showalphabet', gameActive)
+
     });
 
     alphabetBtn.appendChild(button)
@@ -71,10 +77,17 @@ function checkGameOver() {
   const gameResult = document.querySelector(".hangman-result-game")
   if (liveCounter <= 0) {
    gameResult.textContent = 'You lose the game'
+   gameActive = false
+  //  console.log('lose',gameActive)
   } else if (userAnswers.length === word.length) {
     gameResult.textContent = 'You win the game'
+    gameActive = false
+  //  console.log('win', gameActive)
+
   };
 }
+
+
 
 const init = () => {
 
@@ -82,3 +95,4 @@ const init = () => {
 };
 init();
 showField()
+
