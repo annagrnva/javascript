@@ -1,4 +1,4 @@
-const word = 'cat';
+const words = ['cat', 'dog', 'pig'];
 
 const alphabet = ['a', 'b', 'c', 'd',
   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -14,13 +14,21 @@ const alphabetBtn = document.querySelector(".hangman-alphabet_btns");
 let gameActive = true;
 
 function showField() {
+  words.forEach((word) => {
+    word.split('')
+     console.log(word)
+    // wordField.innerHTML = `${word}`
 
-  for (let i = 0; i < word.length; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('hangman-word_line');
-    cell.textContent = '_';
-    wordField.appendChild(cell);
-  };
+  })
+  // words.forEach(word => {
+  //   for (let i = 0; i < word.length; i++) {
+  //     const cell = document.createElement('div');
+  //     console.log(cell)
+  //     cell.classList.add('hangman-word_line');
+  //     cell.textContent = '_';
+  //     wordField.appendChild(cell);
+  //   };
+  // })
 };
 
 // function showAlphabet() {
@@ -62,7 +70,7 @@ function createButton(letter) {
 function buttonClick(letter) {
   if (!gameActive) return;
 
-  const idxWord = word.indexOf(letter);
+  const idxWord = words.indexOf(letter);
   const lines = document.querySelectorAll(".hangman-word_line");
 
   if (idxWord != -1) {
@@ -80,7 +88,7 @@ function checkGameOver() {
   if (liveCounter <= 0) {
     gameResult.textContent = 'You lose the game';
     gameActive = false;
-  } else if (userAnswers.length === word.length) {
+  } else if (userAnswers.length === words.length) {
     gameResult.textContent = 'You win the game';
     gameActive = false;
   };
