@@ -10,36 +10,21 @@ let liveCounter = 6;
 let userAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns");
-// const btns = document.querySelectorAll(".btn")
 let gameActive = true;
 
 function showField() {
-  words.forEach((word) => {
-    word.split('')
-     console.log(word)
-    // wordField.innerHTML = `${word}`
+  const wordArray = words.map(word => word.split(''))
+  const idxLetter = wordArray[0];
 
+  idxLetter.forEach(letter => {
+    const cell = document.createElement('div');
+    cell.classList.add('hangman-word_line');
+    cell.textContent = '_';
+    wordField.appendChild(cell);
+    console.log(letter)
   })
-  // words.forEach(word => {
-  //   for (let i = 0; i < word.length; i++) {
-  //     const cell = document.createElement('div');
-  //     console.log(cell)
-  //     cell.classList.add('hangman-word_line');
-  //     cell.textContent = '_';
-  //     wordField.appendChild(cell);
-  //   };
-  // })
 };
 
-// function showAlphabet() {
-//   btns.forEach(btn => {
-//   btn.addEventListener('click', (btn) => {
-//     let currentBtn = btn.currentTarget
-//     console.log(currentBtn)
-//     //  wordField.textContent += currentBtn
-//   })
-// })
-// }
 function lifeCount() {
   const counter = document.querySelector(".hangman-live_counter");
   counter.classList.add(".hangman-live_counter");
