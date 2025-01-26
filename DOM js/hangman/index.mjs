@@ -1,4 +1,4 @@
-const words = ['cat', 'dog', 'pig'];
+const words = ['cat', 'duck', 'mouse'];
 
 const alphabet = ['a', 'b', 'c', 'd',
   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -11,10 +11,12 @@ let userAnswers = [];
 const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns");
 let gameActive = true;
+let currentWord = 0;
 
 function showField() {
   const wordArray = words.map(word => word.split(''))
-  const idxLetter = wordArray[0];
+  const idxLetter = wordArray[currentWord];
+  console.log(idxLetter)
 
   idxLetter.forEach(letter => {
     const cell = document.createElement('div');
@@ -68,6 +70,17 @@ function buttonClick(letter) {
   checkGameOver();
 };
 
+function nextButton() {
+  const nextwordBtn = document.querySelector(".hangman-btn_next-word")
+  nextwordBtn.addEventListener('click', () => {
+    currentWord ++
+    if(currentWord >= words.length) {
+      currentWord = 0
+    }
+    // console.log(currentWord)
+  })
+
+}
 function checkGameOver() {
   const gameResult = document.querySelector(".hangman-result-game");
   if (liveCounter <= 0) {
@@ -106,3 +119,4 @@ playAgainBtn.addEventListener('click', () => {
 
 showAlphabet()
 showField()
+nextButton()

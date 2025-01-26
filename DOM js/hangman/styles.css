@@ -24,6 +24,14 @@ body {
   color: white;
 }
 
+.hangman-btn_next-word {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: rgb(20, 54, 23);
+  color: white;
+}
 .hangman-alphabet_btns {
   display: flex;
   gap: 5px;
