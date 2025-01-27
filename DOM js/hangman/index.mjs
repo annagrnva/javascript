@@ -14,16 +14,17 @@ let gameActive = true;
 let currentWord = 0;
 
 function showField() {
+  wordField.innerHTML = '';
   const wordArray = words.map(word => word.split(''))
-  const idxLetter = wordArray[currentWord];
-  console.log(idxLetter)
+  const idxWord = wordArray[currentWord];
+  // console.log('какое слово' ,idxWord)
 
-  idxLetter.forEach(letter => {
+  idxWord.forEach(letter => {
     const cell = document.createElement('div');
     cell.classList.add('hangman-word_line');
     cell.textContent = '_';
     wordField.appendChild(cell);
-    console.log(letter)
+    // console.log('как поделено на буквы', letter)
   })
 };
 
@@ -56,7 +57,6 @@ function createButton(letter) {
 
 function buttonClick(letter) {
   if (!gameActive) return;
-
   const idxWord = words.indexOf(letter);
   const lines = document.querySelectorAll(".hangman-word_line");
 
@@ -73,11 +73,13 @@ function buttonClick(letter) {
 function nextButton() {
   const nextwordBtn = document.querySelector(".hangman-btn_next-word")
   nextwordBtn.addEventListener('click', () => {
-    currentWord ++
+     
+     currentWord ++ 
     if(currentWord >= words.length) {
       currentWord = 0
     }
-    // console.log(currentWord)
+    showField()
+    // console.log('какое слово по клику выходит', currentWord)
   })
 
 }
