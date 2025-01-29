@@ -12,19 +12,19 @@ const wordField = document.querySelector(".hangman-word");
 const alphabetBtn = document.querySelector(".hangman-alphabet_btns");
 let gameActive = true;
 let currentWord = 0;
+const gameResult = document.querySelector(".hangman-result-game");
+
 
 function showField() {
   wordField.innerHTML = '';
-  const wordArray = words.map(word => word.split(''))
+  const wordArray = words.map(word => word.split(''));
   const idxWord = wordArray[currentWord];
-  // console.log('какое слово' ,idxWord)
 
   idxWord.forEach(letter => {
     const cell = document.createElement('div');
     cell.classList.add('hangman-word_line');
     cell.textContent = '_';
     wordField.appendChild(cell);
-    // console.log('как поделено на буквы', letter)
   })
 };
 
@@ -58,7 +58,7 @@ function createButton(letter) {
 function buttonClick(letter) {
   if (!gameActive) return;
   const idxWord = words[currentWord];
- const wordLetter = idxWord.indexOf(letter);
+  const wordLetter = idxWord.indexOf(letter);
   const lines = document.querySelectorAll(".hangman-word_line");
 
   if (wordLetter != -1) {
@@ -72,15 +72,19 @@ function buttonClick(letter) {
 };
 
 function nextButton() {
+  if (!gameActive) return;
+  gameResult.textContent = ' '
   const nextwordBtn = document.querySelector(".hangman-btn_next-word")
   nextwordBtn.addEventListener('click', () => {
-     
-     currentWord ++ 
-    if(currentWord >= words.length) {
-      currentWord = 0
+    const nextWordMessage = document.querySelector(".hamgman-nextWord_message")
+    currentWord++
+    if (currentWord >= words.length) {
+      nextWordMessage.textContent = 'You have no more words';
+
+      // currentWord = 0
     }
     showField()
-    // console.log('какое слово по клику выходит', currentWord)
+
   })
 
 }
@@ -104,10 +108,10 @@ function resetGame() {
   const lines = document.querySelectorAll(".hangman-word_line");
   lines.forEach(line => {
     line.classList.add('hangman-word_line')
+    line.textContent = '_';
+
   });
-
   lifeCount();
-
   const gameResult = document.querySelector(".hangman-result-game");
   gameResult.textContent = ' ';
 
