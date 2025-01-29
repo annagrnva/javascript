@@ -57,12 +57,13 @@ function createButton(letter) {
 
 function buttonClick(letter) {
   if (!gameActive) return;
-  const idxWord = words.indexOf(letter);
+  const idxWord = words[currentWord];
+ const wordLetter = idxWord.indexOf(letter);
   const lines = document.querySelectorAll(".hangman-word_line");
 
-  if (idxWord != -1) {
-    userAnswers[idxWord] = letter;
-    lines[idxWord].textContent = letter;
+  if (wordLetter != -1) {
+    userAnswers[wordLetter] = letter;
+    lines[wordLetter].textContent = letter;
   } else {
     lifeCount();
   };
