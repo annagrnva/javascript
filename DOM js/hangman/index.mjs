@@ -76,12 +76,12 @@ function nextButton() {
   gameResult.textContent = ' '
   const nextwordBtn = document.querySelector(".hangman-btn_next-word")
   nextwordBtn.addEventListener('click', () => {
+    if (!gameActive) return;
     const nextWordMessage = document.querySelector(".hamgman-nextWord_message")
     currentWord++
     if (currentWord >= words.length) {
       nextWordMessage.textContent = 'You have no more words';
-
-      // currentWord = 0
+      currentWord = 0
     }
     showField()
 
@@ -89,7 +89,6 @@ function nextButton() {
 
 }
 function checkGameOver() {
-  const gameResult = document.querySelector(".hangman-result-game");
   if (liveCounter <= 0) {
     gameResult.textContent = 'You lose the game';
     gameActive = false;
@@ -97,8 +96,8 @@ function checkGameOver() {
     gameResult.textContent = 'You win the game';
     gameActive = false;
   };
-}
 
+};
 
 function resetGame() {
   liveCounter = 6;
