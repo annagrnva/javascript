@@ -31,10 +31,11 @@ function showField() {
 function lifeCount() {
   const counter = document.querySelector(".hangman-live_counter");
   counter.classList.add(".hangman-live_counter");
-  counter.textContent = `You have ${liveCounter} lives left`;
+
   if (liveCounter > 0) {
-    liveCounter = liveCounter - 1
-  }
+    liveCounter = liveCounter - 1;
+  };  
+  counter.textContent = `You have ${liveCounter} lives left`;
   checkGameOver()
 };
 
@@ -81,22 +82,20 @@ function nextButton() {
     currentWord++
     if (currentWord >= words.length) {
       nextWordMessage.textContent = 'You have no more words';
-      currentWord = 0
-    }
+      currentWord = 0;
+    };
     showField()
+  });
+};
 
-  })
-
-}
 function checkGameOver() {
   if (liveCounter <= 0) {
     gameResult.textContent = 'You lose the game';
     gameActive = false;
-  } else if (userAnswers.length === words.length) {
+  } else if (userAnswers.length === words[currentWord].length) {
     gameResult.textContent = 'You win the game';
     gameActive = false;
   };
-
 };
 
 function resetGame() {
