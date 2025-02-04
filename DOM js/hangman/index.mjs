@@ -13,6 +13,7 @@ const alphabetBtn = document.querySelector(".hangman-alphabet_btns");
 let gameActive = true;
 let currentWord = 0;
 const gameResult = document.querySelector(".hangman-result-game");
+const counter = document.querySelector(".hangman-live_counter");
 
 
 function showField() {
@@ -34,7 +35,7 @@ function lifeCount() {
 
   if (liveCounter > 0) {
     liveCounter = liveCounter - 1;
-  };  
+  };
   counter.textContent = `You have ${liveCounter} lives left`;
   checkGameOver()
 };
@@ -74,10 +75,10 @@ function buttonClick(letter) {
 
 function nextButton() {
   if (!gameActive) return;
-  gameResult.textContent = ' '
   const nextwordBtn = document.querySelector(".hangman-btn_next-word")
   nextwordBtn.addEventListener('click', () => {
-    if (!gameActive) return;
+    userAnswers = []
+    // console.log('ckeck users empty', userAnswers)
     const nextWordMessage = document.querySelector(".hamgman-nextWord_message")
     currentWord++
     if (currentWord >= words.length) {
@@ -88,13 +89,27 @@ function nextButton() {
   });
 };
 
+
+let countTrueAnswers = 0;
 function checkGameOver() {
+  console.log(userAnswers)
+  console.log(words[currentWord])
+
+  let filterUserAnswers = userAnswers.filter(item => {
+    return Boolean(item)
+  })
+  console.log(filterUserAnswers)
   if (liveCounter <= 0) {
     gameResult.textContent = 'You lose the game';
     gameActive = false;
-  } else if (userAnswers.length === words[currentWord].length) {
-    gameResult.textContent = 'You win the game';
-    gameActive = false;
+  } else if (filterUserAnswers.length === words[currentWord].length) {
+    countTrueAnswers += 1
+    console.log(countTrueAnswers)
+    if (countTrueAnswers === words.length) {
+      gameResult.textContent = 'You win the game';
+      gameActive = false;
+    }
+
   };
 };
 
@@ -109,17 +124,17 @@ function resetGame() {
     line.textContent = '_';
 
   });
-  lifeCount();
   const gameResult = document.querySelector(".hangman-result-game");
   gameResult.textContent = ' ';
+  counter.textContent = '';
 
 }
 
 const playAgainBtn = document.querySelector(".hangman-btn");
 playAgainBtn.addEventListener('click', () => {
-  if (!gameActive) {
+  console.log(gameActive)
     resetGame();
-  }
+
 });
 
 showAlphabet()
