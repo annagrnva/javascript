@@ -32,6 +32,17 @@ body {
   background-color: rgb(20, 54, 23);
   color: white;
 }
+
+.hangman-alphabet_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hangman-counter_total {
+  display: flex;
+  justify-content: space-between;
+}
+
 .hangman-alphabet_btns {
   display: flex;
   gap: 5px;

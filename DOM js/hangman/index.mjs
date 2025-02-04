@@ -14,7 +14,10 @@ let gameActive = true;
 let currentWord = 0;
 const gameResult = document.querySelector(".hangman-result-game");
 const counter = document.querySelector(".hangman-live_counter");
+let countTrueAnswers = 0;
+const animatedNumber = document.querySelector(".hangman-counter_animated-number")
 
+const totalWords = words.length;
 
 function showField() {
   wordField.innerHTML = '';
@@ -45,6 +48,11 @@ function showAlphabet() {
     const button = createButton(letter);
     alphabetBtn.appendChild(button);
   });
+};
+
+function counterOnWords() {
+  const animatedNumber = document.querySelector(".hangman-counter_animated-number")
+  animatedNumber.textContent = `${countTrueAnswers}/${totalWords}`;
 };
 
 function createButton(letter) {
@@ -89,27 +97,21 @@ function nextButton() {
   });
 };
 
-
-let countTrueAnswers = 0;
 function checkGameOver() {
-  console.log(userAnswers)
-  console.log(words[currentWord])
-
   let filterUserAnswers = userAnswers.filter(item => {
     return Boolean(item)
-  })
-  console.log(filterUserAnswers)
+  });
   if (liveCounter <= 0) {
     gameResult.textContent = 'You lose the game';
     gameActive = false;
   } else if (filterUserAnswers.length === words[currentWord].length) {
-    countTrueAnswers += 1
-    console.log(countTrueAnswers)
+    countTrueAnswers += 1;
+    counterOnWords()
     if (countTrueAnswers === words.length) {
       gameResult.textContent = 'You win the game';
       gameActive = false;
-    }
 
+    };
   };
 };
 
@@ -117,26 +119,26 @@ function resetGame() {
   liveCounter = 6;
   userAnswers = [];
   gameActive = true;
+  countTrueAnswers = 0;
 
   const lines = document.querySelectorAll(".hangman-word_line");
   lines.forEach(line => {
     line.classList.add('hangman-word_line')
     line.textContent = '_';
-
   });
   const gameResult = document.querySelector(".hangman-result-game");
   gameResult.textContent = ' ';
   counter.textContent = '';
-
-}
+  counterOnWords()
+};
 
 const playAgainBtn = document.querySelector(".hangman-btn");
 playAgainBtn.addEventListener('click', () => {
-  console.log(gameActive)
-    resetGame();
+  resetGame();
 
 });
 
 showAlphabet()
 showField()
+counterOnWords()
 nextButton()
